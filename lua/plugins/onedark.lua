@@ -5,8 +5,8 @@ return {
   config = function()
     vim.o.termguicolors = true
     require("onedark").setup({
-      style = "dark",
-			transparent = true,
+      style = "warm",
+			transparent = false,
     })
     require("onedark").load()
   end,

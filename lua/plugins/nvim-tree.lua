@@ -45,7 +45,7 @@ return {
 					},
 				},
 				expand_all = {
-					exclude = { ".git", "node_modules", "bin", "build", "target", "env", "__pycache__" },
+					exclude = { ".git", "node_modules", "bin", "build", "target", "env", "__pycache__", "assets" },
 				},
 			},
 			git = {
