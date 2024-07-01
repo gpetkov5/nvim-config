@@ -35,13 +35,11 @@ return {
     require("mason").setup({})
     require("mason-lspconfig").setup({
       ensure_installed = {
-        "tsserver",
-        "clangd",
-        "pyright",
-        "rust_analyzer",
-        "gopls",
-        "ocamllsp",
-        "hls",
+       "tsserver",
+       "clangd",
+       "pyright",
+       "rust_analyzer",
+       "gopls",
       },
       handlers = {
         lsp.default_setup,
@@ -99,13 +97,13 @@ return {
       },
       mapping = cmp.mapping.preset.insert({
         ["<CR>"] = cmp.mapping.confirm({ select = true }),
-        ["<C-n>"] = cmp.mapping.select_next_item(),
+        ["<Tab>"] = cmp.mapping.select_next_item(),
         ["<C-p>"] = cmp.mapping.select_prev_item(),
         ["<C-Space>"] = cmp.mapping.complete(),
         ["<C-u>"] = cmp.mapping.scroll_docs(-4),
         ["<C-d>"] = cmp.mapping.scroll_docs(4),
-        ["<Tab>"] = cmp_action.luasnip_supertab(),
-        ["<S-Tab>"] = cmp_action.luasnip_shift_supertab(),
+        -- ["<Tab>"] = cmp_action.luasnip_supertab(),
+        -- ["<S-Tab>"] = cmp_action.luasnip_shift_supertab(),
       }),
       sources = cmp.config.sources({
         { name = "nvim_lsp" },
