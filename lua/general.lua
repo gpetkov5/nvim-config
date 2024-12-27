@@ -16,6 +16,7 @@ vim.languages_with_shorter_tab = {
 	"ocaml",
 	"pascal",
 	"scala",
+  "cpp",
 }
 
 vim.set_tabstop = function()
@@ -60,3 +61,6 @@ vim.o.mouse = "a"
 vim.o.smartindent = true
 vim.o.autoindent = true
 vim.o.autoread = true
+
+vim.opt.cursorline = true
+vim.opt.cursorlineopt = "number"

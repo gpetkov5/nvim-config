@@ -14,7 +14,7 @@ return {
     require("telescope").load_extension("harpoon")
 
     vim.keymap.set("n", "<leader>ha", function()
-      harpoon:list():append()
+      harpoon:list():add()
     end)
     vim.keymap.set("n", "<leader>hm", "<cmd>Telescope harpoon marks<CR>")
     vim.keymap.set("n", "<leader>hp", function()
