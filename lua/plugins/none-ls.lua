@@ -19,7 +19,5 @@ return {
 				null_ls.builtins.formatting.cmake_format,
 			},
 		})
-
-		vim.keymap.set("n", "=G", vim.lsp.buf.format)
 	end,
 }

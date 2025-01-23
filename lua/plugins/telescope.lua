@@ -1,26 +1,29 @@
 return {
-	"nvim-telescope/telescope.nvim",
-	tag = "0.1.5",
-	dependencies = {
-		"nvim-lua/plenary.nvim",
-	},
+  "nvim-telescope/telescope.nvim",
+  tag = "0.1.8",
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+  },
 
-	lazy = false,
+  lazy = true,
+  config = function()
+    local amend_func_root = function(func)
+      local root = string.gsub(vim.fn.system("git rev-parse --show-toplevel"), "\n", "")
+      if vim.v.shell_error == 0 then
+        local wrapper = function()
+          return func({ cwd = root })
+        end
+        return wrapper
+      else
+        return func
+      end
+    end
 
-	config = function()
-		local my_find_files = function()
-			local root = string.gsub(vim.fn.system("git rev-parse --show-toplevel"), "\n", "")
-			if vim.v.shell_error == 0 then
-				require("telescope.builtin").find_files({ cwd = root })
-			else
-				require("telescope.builtin").find_files()
-			end
-		end
-
-		local builtin = require("telescope.builtin")
-		vim.keymap.set("n", "<leader>ff", my_find_files, {})
-		vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
-		vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
-		vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
-	end,
+    local builtin = require("telescope.builtin")
+    vim.keymap.set("n", "<leader>ff", amend_func_root(builtin.find_files), { desc = "Telescope find files" })
+    vim.keymap.set("n", "<leader>fg", amend_func_root(builtin.live_grep), { desc = "Telescope live grep" })
+    vim.keymap.set("n", "<leader>fb", amend_func_root(builtin.buffers), { desc = "Telescope buffer" })
+    vim.keymap.set("n", "<leader>fh", amend_func_root(builtin.help_tags), { desc = "Telescope help tags" })
+    vim.keymap.set("n", "<leader>fs", amend_func_root(builtin.grep_string), { desc = "Telescope help tags" })
+  end,
 }

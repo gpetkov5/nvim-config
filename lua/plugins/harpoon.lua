@@ -9,19 +9,13 @@ return {
 
   config = function()
     local harpoon = require("harpoon")
-    harpoon:setup() -- Required
-
-    require("telescope").load_extension("harpoon")
+    harpoon:setup()
 
     vim.keymap.set("n", "<leader>ha", function()
       harpoon:list():add()
     end)
-    vim.keymap.set("n", "<leader>hm", "<cmd>Telescope harpoon marks<CR>")
-    vim.keymap.set("n", "<leader>hp", function()
-      harpoon:list():prev()
-    end)
-    vim.keymap.set("n", "<leader>hn", function()
-      harpoon:list():next()
+    vim.keymap.set("n", "<leader>hm", function()
+      harpoon.ui:toggle_quick_menu(harpoon:list())
     end)
   end,
 }
